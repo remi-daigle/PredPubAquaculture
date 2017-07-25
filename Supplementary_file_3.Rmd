@@ -1,0 +1,49 @@
+---
+title: 'Supplementary file 3: annotated R-script for lme-AIC/logLikelihood analysis for demographic article-level metrics'
+author: "Jeff C. Clements, Rémi M. Daigle, Halley E. Froehlich"
+date: "July 25, 2017"
+output: pdf_document
+---
+
+If necessary, install the package `nlme`
+```{r install, eval=FALSE}
+install.packages("nlme")
+```
+
+Load the package:
+```{r load}
+library(nlme)
+```
+
+Upload data file for demographic proportions
+```{r}
+demographic <- read.csv("TableS3_proportions.csv",stringsAsFactors = FALSE)
+names(demographic)
+```
+
+Arcsine transform the proportion data
+```{r}
+demographic$arcProp.developing.corr.authors <- asin(demographic$X.b..Prop.developing.corr.authors)
+demographic$arcProp.developing.other.authors <- asin(demographic$X.c..Prop.developing.other.authors)
+```
+
+lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on proportion of corresponding authors from developing countries
+```{r}
+demo.lme<-lme(arcProp.developing.corr.authors~Predatory.,random=~1|Journal,data=demographic)
+anova(demo.lme)
+```
+```{r}
+demo.gls<-gls(arcProp.developing.corr.authors~Predatory.,data=demographic)
+anova(demo.lme,demo.gls)
+```
+
+lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on proportion of additional authors from developing countries
+```{r}
+demo2.lme<-lme(arcProp.developing.other.authors~Predatory.,random=~1|Journal,data=demographic)
+anova(demo2.lme)
+```
+
+```{r}
+demo3.gls<-gls(arcProp.developing.other.authors~Predatory.,data=demographic)
+anova(demo2.lme,demo3.gls)
+```
