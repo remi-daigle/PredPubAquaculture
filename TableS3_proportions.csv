@@ -1,13 +1,13 @@
-Predatory?,Journal,(a) Prop developing prim authors,(b) Prop developing corr authors,(c) Prop developing other authors,(d) Prop statistics reported,(e) Prop stats adequate
-Predatory,A,0.857,0.857,0.778,0.55,0
-Predatory,B,1,1,1,0.611,0
-Predatory,C,0.8,0.8,0.818,0.4,0
-Predatory,D,0.9,0.9,0.929,0.737,0.053
-Predatory,E,0.55,0.5,0.343,0.5,0.125
-Predatory,F,0.55,0.55,0.538,0.214,0.143
-Non-predatory,G,0.45,0.45,0.525,0.833,0.333
-Non-predatory,H,0.238,0.286,0.274,1,0.85
-Non-predatory,I,0.5,0.5,0.695,1,0.833
-Non-predatory,J,0.5,0.5,0.478,0.895,0.842
-Non-predatory,K,0.65,0.65,0.65,1,0.842
-Non-predatory,L,0.714,0.714,0.776,0.944,0.556
+Non-Indexed,Journal,(a) Prop developing prim authors,(b) Prop developing corr authors,(c) Prop developing other authors,(d) Prop statistics reported,(e) Prop stats adequate
+Non-Indexed,A,0.857,0.857,0.778,0.55,0
+Non-Indexed,B,1,1,1,0.611,0
+Non-Indexed,C,0.8,0.8,0.818,0.4,0
+Non-Indexed,D,0.9,0.9,0.929,0.737,0.053
+Non-Indexed,E,0.55,0.5,0.343,0.5,0.125
+Non-Indexed,F,0.55,0.55,0.538,0.214,0.143
+Indexed,G,0.45,0.45,0.525,0.833,0.333
+Indexed,H,0.238,0.286,0.274,1,0.85
+Indexed,I,0.5,0.5,0.695,1,0.833
+Indexed,J,0.5,0.5,0.478,0.895,0.842
+Indexed,K,0.65,0.65,0.65,1,0.842
+Indexed,L,0.714,0.714,0.776,0.944,0.556

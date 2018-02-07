@@ -1,7 +1,7 @@
 ---
 title: 'Supplementary file 2: annotated R-script for lme-AIC/logLikelihood analysis for non-demographic article-level metrics'
 author: "Jeff C. Clements, Rémi M. Daigle, Halley E. Froehlich"
-date: "July 25, 2017"
+date: "Feb 7, 2018"
 output: pdf_document
 ---
 
@@ -17,76 +17,76 @@ library(nlme)
 
 Upload data file for time since inception, number of papers per year
 ```{r}
-nondemographic <- read.csv("Table S2_Pred pubs.csv",stringsAsFactors = FALSE)
+nondemographic <- read.csv("Table S2_article_level.csv",stringsAsFactors = FALSE)
 names(nondemographic)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the number of authors per article.
 ```{r}
-nondemo1.lme<-lme(X..authors~Predatory.,random=~1|Journal,data=nondemographic)
+nondemo1.lme<-lme(X..authors~Non.Indexed,random=~1|Journal,data=nondemographic)
 anova(nondemo1.lme)
 
 ```
 ```{r}
-nondemo1.gls<-gls(X..authors~Predatory.,data=nondemographic)
+nondemo1.gls<-gls(X..authors~Non.Indexed,data=nondemographic)
 anova(nondemo1.lme,nondemo1.gls)
 
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the length of articles
 ```{r}
-nondemo2.lme<-lme(Article.length....pgs.~Predatory.,random=~1|Journal,data=nondemographic)
+nondemo2.lme<-lme(Article.length....pgs.~Non.Indexed,random=~1|Journal,data=nondemographic)
 anova(nondemo2.lme)
 ```
 
 ```{r}
-nondemo2.gls<-gls(Article.length....pgs.~Predatory.,data=nondemographic)
+nondemo2.gls<-gls(Article.length....pgs.~Non.Indexed,data=nondemographic)
 anova(nondemo2.lme,nondemo2.gls)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the number of references per article.
 ```{r}
-nondemo3.lme<-lme(X..of.references~Predatory.,random=~1|Journal,data=nondemographic)
+nondemo3.lme<-lme(X..of.references~Non.Indexed,random=~1|Journal,data=nondemographic)
 anova(nondemo3.lme)
 ```
 
 ```{r}
-nondemo3.gls<-gls(X..of.references~Predatory.,data=nondemographic)
+nondemo3.gls<-gls(X..of.references~Non.Indexed,data=nondemographic)
 anova(nondemo3.lme,nondemo3.gls)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the number of figures and tables per article.
 ```{r}
-nondemo4.lme<-lme(X..figs...tables~Predatory.,random=~1|Journal,data=nondemographic,na.action='na.omit')
+nondemo4.lme<-lme(X..figs...tables~Non.Indexed,random=~1|Journal,data=nondemographic,na.action='na.omit')
 anova(nondemo4.lme)
 ```
 
 ```{r}
-nondemo4.gls<-gls(X..figs...tables~Predatory.,data=nondemographic,na.action='na.omit')
+nondemo4.gls<-gls(X..figs...tables~Non.Indexed,data=nondemographic,na.action='na.omit')
 anova(nondemo4.lme,nondemo4.gls)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the time from acceptance to publication
 
 ```{r}
-nondemo5.lme<-lme(Time.sub.accept..days.~Predatory.,random=~1|Journal,data=nondemographic,na.action='na.omit')
+nondemo5.lme<-lme(Time.sub.accept..days.~Non.Indexed,random=~1|Journal,data=nondemographic,na.action='na.omit')
 anova(nondemo5.lme)
 ```
 
 
 ```{r}
-nondemo5.gls<-gls(Time.sub.accept..days.~Predatory.,data=nondemographic,na.action='na.omit')
+nondemo5.gls<-gls(Time.sub.accept..days.~Non.Indexed,data=nondemographic,na.action='na.omit')
 anova(nondemo5.lme,nondemo5.gls)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on the time from submission to acceptance
 ```{r}
-nondemo6.lme<-lme(Time.accept.pub..days.~Predatory.,random=~1|Journal,data=nondemographic,na.action='na.omit')
+nondemo6.lme<-lme(Time.accept.pub..days.~Non.Indexed,random=~1|Journal,data=nondemographic,na.action='na.omit')
 anova(nondemo6.lme)
 ```
 
 ```{r}
-nondemo6.gls<-gls(Time.accept.pub..days.~Predatory.,data=nondemographic,na.action='na.omit')
+nondemo6.gls<-gls(Time.accept.pub..days.~Non.Indexed,data=nondemographic,na.action='na.omit')
 anova(nondemo6.lme,nondemo6.gls)
 ```
 Model df      AIC      BIC    logLik   Test  L.Ratio p-value
@@ -109,23 +109,23 @@ demographic$arcProp.stats.adequate <- asin(demographic$X.e..Prop.stats.adequate)
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on proportion of article reporting general statistical analyses
 ```{r}
-nondemo7.lme<-lme(arcProp.statistics.reported~Predatory.,random=~1|Journal,data=demographic)
+nondemo7.lme<-lme(arcProp.statistics.reported~Non.Indexed,random=~1|Journal,data=demographic)
 anova(nondemo7.lme)
 ```
 ```{r}
-nondemo7.gls<-gls(arcProp.statistics.reported~Predatory.,data=demographic)
+nondemo7.gls<-gls(arcProp.statistics.reported~Non.Indexed,data=demographic)
 anova(nondemo7.lme,nondemo7.gls)
 ```
 
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on proportion of article reporting details of statistical analyses
 ```{r}
-nondemo8.lme<-lme(arcProp.stats.adequate~Predatory.,random=~1|Journal,data=demographic)
+nondemo8.lme<-lme(arcProp.stats.adequate~Non.Indexed,random=~1|Journal,data=demographic)
 anova(nondemo8.lme)
 ```
 
 ```{r}
-nondemo8.gls<-gls(arcProp.stats.adequate~Predatory.,data=demographic)
+nondemo8.gls<-gls(arcProp.stats.adequate~Non.Indexed,data=demographic)
 anova(nondemo8.lme, nondemo8.gls)
 ```
 

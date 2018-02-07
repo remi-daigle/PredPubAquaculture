@@ -2,7 +2,7 @@
 title: 'Supplementary file 1: annotated R-script for lme-AIC/logLikelihood analysis
   for journal-level metrics'
 author: "Jeff C. Clements, Rémi M. Daigle, Halley E. Froehlich"
-date: "July 25, 2017"
+date: "Feb 7, 2018"
 output: pdf_document
 ---
 
@@ -18,7 +18,7 @@ library(nlme)
 
 Upload data file for time since inception, number of papers per year
 ```{r}
-journals <- read.csv("Table S1_Pred pubs.csv",stringsAsFactors = FALSE)
+journals <- read.csv("Table S1_journal_level.csv",stringsAsFactors = FALSE)
 names(journals)
 ```
 
@@ -32,35 +32,35 @@ journals$lnAvgPapersPerYear <- log(journals$Avg.papers.per.year)
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on time since inception.
 ```{r}
-j1.lme<-lme(lnYearsRunning~ Predatory.,random=~1|Journal,data=journals)
+j1.lme<-lme(lnYearsRunning~ Non.Indexed,random=~1|Journal,data=journals)
 anova(j1.lme)
 ```
 
 ```{r}
-j1.gls<-gls(lnYearsRunning~ Predatory.,data=journals)
+j1.gls<-gls(lnYearsRunning~ Non.Indexed,data=journals)
 anova(j1.lme,j1.gls)
 ```
 
 lme and AIC/logLikelihood for effect of journal [random] and journal type [fixed] on number of papers per year.
 
 ```{r}
-j2.lme<-lme(lnAvgPapersPerYear~ Predatory.,random=~1|Journal,data=journals)
+j2.lme<-lme(lnAvgPapersPerYear~ Non.Indexed,random=~1|Journal,data=journals)
 anova(j2.lme)
 ```
 
 ```{r}
-j2.gls<-gls(lnAvgPapersPerYear~ Predatory.,data=journals)
+j2.gls<-gls(lnAvgPapersPerYear~ Non.Indexed,data=journals)
 anova(j2.lme,j2.gls)
 ```
 
 lme and AIC/LogLikelihood for effect of journal [random] and journal type [fixed] on open access APC
 ```{r}
-j3.lme<-lme(lnOA_APC~Predatory.,random=~1|Journal,data=journals,na.action = "na.omit")
+j3.lme<-lme(lnOA_APC~Non.Indexed,random=~1|Journal,data=journals,na.action = "na.omit")
 anova(j3.lme)
 ```
 
 ```{r}
-j3.gls<-gls(lnOA_APC~Predatory.,data=journals,na.action = "na.omit")
+j3.gls<-gls(lnOA_APC~Non.Indexed,data=journals,na.action = "na.omit")
 anova(j3.lme,j3.gls)
 ```
 
